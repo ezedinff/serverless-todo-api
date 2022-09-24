@@ -58,6 +58,7 @@ functions:
           path: todos
           cors: true
           authorizer: Auth
+    iamRoleStatementsInherit: true
     iamRoleStatements:
       - Effect: Allow
         Action:
@@ -89,6 +90,7 @@ functions:
             description: Creates a new TODO item
             requestModels:
               application/json: CreateTodoRequest
+    iamRoleStatementsInherit: true
     iamRoleStatements:
       - Effect: Allow
         Action:
@@ -115,7 +117,8 @@ functions:
             description: Updates a TODO item
             requestModels:
               application/json: UpdateTodoRequest
-    iamRoleStatements:
+    iamRoleStatementsInherit: true
+    amRoleStatements:
       - Effect: Allow
         Action:
           - dynamodb:GetItem
@@ -139,6 +142,7 @@ functions:
           documentation:
             summary: Deletes a TODO item
             description: Deletes a TODO item
+    iamRoleStatementsInherit: true
     iamRoleStatements:
       - Effect: Allow
         Action:
@@ -163,6 +167,7 @@ functions:
           documentation:
             summary: Generates a pre-signed URL for uploading an attachment
             description: Generates a pre-signed URL for uploading an attachment
+    iamRoleStatementsInherit: true
     iamRoleStatements:
       - Effect: Allow
         Action:
@@ -188,8 +193,8 @@ resources:
       Properties:
         ResponseParameters:
           gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
-          getewayresponse.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
-          gatewayresponse.header.Access-Control-Allow-Methods: "'OPTIONS,GET,PUT,POST,DELETE'"
+          gatewayresponse.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+          gatewayresponse.header.Access-Control-Allow-Methods: "'GET,OPTIONS,POST'"
         ResponseType: DEFAULT_4XX
         RestApiId:
           Ref: ApiGatewayRestApi
@@ -203,7 +208,7 @@ resources:
         ValidateRequestParameters: false
     
     # TODO: Create a DynamoDB table with local secondary index and a composite key
-    TodosTable:
+    TodosDynamoDBTable:
       Type: AWS::DynamoDB::Table
       Properties:
         AttributeDefinitions:
