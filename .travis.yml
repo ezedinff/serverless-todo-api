@@ -5,6 +5,7 @@ node_js:
 install: 
   - npm install -g serverless
   - travis_retry npm install
+  - npm install serverless-iam-roles-per-function@next
 
 script:
   - export NODE_OPTIONS=--max_old_space_size=8192
