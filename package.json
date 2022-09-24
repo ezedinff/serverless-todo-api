@@ -1,0 +1,33 @@
+{
+  "name": "serverless-todo-app",
+  "version": "1.0.0",
+  "description": "Serverless TODO image app",
+  "dependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/http-errors": "^1.6.3",
+    "aws-xray-sdk": "^2.5.0",
+    "axios": "^0.27.2",
+    "http-errors": "^1.7.3",
+    "jsonwebtoken": "^8.5.1",
+    "middy": "^0.24.0",
+    "source-map-support": "^0.5.19",
+    "uuid": "^3.4.0",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.106",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/node": "^10.17.26",
+    "aws-sdk": "^2.706.0",
+    "serverless-aws-documentation": "^1.1.0",
+    "serverless-iam-roles-per-function": "^1.0.4",
+    "serverless-plugin-canary-deployments": "^0.4.8",
+    "serverless-reqvalidator-plugin": "^1.0.3",
+    "serverless-webpack": "^5.3.2",
+    "ts-loader": "^5.4.5",
+    "typescript": "^3.9.5",
+    "webpack": "^4.43.0"
+  },
+  "author": "Ivan Mushketyk",
+  "license": "MIT"
+}
