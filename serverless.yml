@@ -29,10 +29,6 @@ provider:
     SIGNED_URL_EXPIRATION: 300
 
 custom:
-  webpack:
-    webpackConfig: ./webpack.config.js
-    includeModules: true
-
   documentation:
     api:
       info:
