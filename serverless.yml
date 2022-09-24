@@ -1,5 +1,4 @@
-service:
-  name: serverless-todo-app
+service: serverless-todo-app
 
 plugins:
   - serverless-webpack
