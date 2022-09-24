@@ -6,6 +6,9 @@ plugins:
   - serverless-reqvalidator-plugin
   - serverless-aws-documentation
 
+package:
+  individually: true
+
 provider:
   name: aws
   runtime: nodejs12.x
@@ -24,18 +27,6 @@ provider:
     USER_ID_INDEX: UserIdIndex
     ATTACHMENT_S3_BUCKET: attachments-ezedinff-${self:provider.stage}
     SIGNED_URL_EXPIRATION: 300
-
-  logs:
-    # Enable API Gateway logs
-    restApi: true
-
-  iam:
-    role:
-      statements:
-        - Effect: Allow
-          Action:
-            - xray:PutTraceSegments
-          Resource: "*"
 
 custom:
   documentation:
