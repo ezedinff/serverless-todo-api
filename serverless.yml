@@ -47,10 +47,10 @@ custom:
     models:
       - name: CreateTodoRequest
         contentType: application/json
-        schema: ${file(models/CreateTodoRequest.json)}
+        schema: ${file(models/create-todo-request.json)}
       - name: UpdateTodoRequest
         contentType: application/json
-        schema: ${file(models/UpdateTodoRequest.json)}
+        schema: ${file(models/update-todo-request.json)}
 
 functions:
 
