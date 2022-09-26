@@ -5,7 +5,6 @@ plugins:
   - serverless-iam-roles-per-function
   - serverless-reqvalidator-plugin
   - serverless-aws-documentation
-  # - serverless-plugin-canary-deployments
 
 package:
   individually: true
@@ -46,7 +45,6 @@ functions:
   Auth:
     handler: src/lambda/auth/auth0Authorizer.handler
 
-  # TODO: Configure this function
   GetTodos:
     handler: src/lambda/http/getTodos.handler
     events:
@@ -69,7 +67,6 @@ functions:
           - xray:PutTraceSegments
         Resource: "*"
 
-  # TODO: Configure this function
   CreateTodo:
     handler: src/lambda/http/createTodo.handler
     events:
@@ -80,8 +77,8 @@ functions:
           authorizer: Auth
           reqValidatorName: RequestBodyValidator
           documentation:
-            summary: Create a new group
-            description: Create a new group
+            summary: Create a new todo item
+            description: Create a new todo item for the current user
             requestModels:
               "application/json": CreateTodoRequest
     iamRoleStatements:
@@ -94,7 +91,6 @@ functions:
           - xray:PutTraceSegments
         Resource: "*"
 
-  # TODO: Configure this function
   UpdateTodo:
     handler: src/lambda/http/updateTodo.handler
     events:
@@ -105,8 +101,8 @@ functions:
           authorizer: Auth
           reqValidatorName: RequestBodyValidator
           documentation:
-            summary: Create a new group
-            description: Create a new group
+            summary: Update a todo item
+            description: Update a todo item for the current user
             requestModels:
               "application/json": UpdateTodoRequest
     iamRoleStatements:
@@ -120,7 +116,6 @@ functions:
           - xray:PutTraceSegments
         Resource: "*"
 
-  # TODO: Configure this function
   DeleteTodo:
     handler: src/lambda/http/deleteTodo.handler
     events:
@@ -144,7 +139,6 @@ functions:
           - xray:PutTraceSegments
         Resource: "*"
 
-  # TODO: Configure this function
   GenerateUploadUrl:
     handler: src/lambda/http/generateUploadUrl.handler
     events:
@@ -250,3 +244,10 @@ resources:
           Ref: ApiGatewayRestApi
         ValidateRequestBody: true
         ValidateRequestParameters: false
+    
+    Outputs:
+      RequestBodyValidator:
+        Value:
+          Ref: request-body-validator
+        Export:
+          Name: RequestBodyValidator
