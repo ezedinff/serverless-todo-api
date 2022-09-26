@@ -75,7 +75,7 @@ functions:
           path: todos
           cors: true
           authorizer: Auth
-          reqValidatorName: RequestBodyValidator
+          reqValidatorName: 'RequestBodyValidator'
           documentation:
             summary: Create a new todo item
             description: Create a new todo item for the current user
@@ -99,7 +99,7 @@ functions:
           path: todos/{todoId}
           cors: true
           authorizer: Auth
-          reqValidatorName: RequestBodyValidator
+          reqValidatorName: 'RequestBodyValidator'
           documentation:
             summary: Update a todo item
             description: Update a todo item for the current user
