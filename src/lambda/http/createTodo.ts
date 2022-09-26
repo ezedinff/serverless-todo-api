@@ -14,9 +14,18 @@ const logger = createLogger('createTodo')
 
 export const handler = middy(async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   logger.info('Processing event: ', event)
+  const newTodo: CreateTodoRequest = JSON.parse(event.body)
+  if (!newTodo.name) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({
+        error: 'Missing name'
+      })
+    }
+  }
+
 
   const userId = getUserId(event)
-  const newTodo: CreateTodoRequest = JSON.parse(event.body)
   const newItem = await createTodo(newTodo, userId)
 
   return {
